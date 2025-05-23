@@ -1,7 +1,7 @@
 package com.vet.user_service.model;
 
 
-public class UserRequest {
+public class UseLoginRequest {
     private String username;
     private String password;
 

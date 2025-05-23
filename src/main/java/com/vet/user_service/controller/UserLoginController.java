@@ -7,15 +7,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
-public class UserController {
+public class UserLoginController {
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UserRequest userRequest) {
+    public ResponseEntity<?> login(@RequestBody UseLoginRequest useLoginRequest) {
         // Replace with actual user validation logic
-        if ("user123".equals(userRequest.getUsername()) && "pass123".equals(userRequest.getPassword())) {
-            String token = JwtUtil.generateToken(userRequest.getUsername());
-            return ResponseEntity.ok(new AuthResponse(token, "Welcome " + userRequest.getUsername()));
+        if ("user123".equals(useLoginRequest.getUsername()) && "pass123".equals(useLoginRequest.getPassword())) {
+            String token = JwtUtil.generateToken(useLoginRequest.getUsername());
+            return ResponseEntity.ok(new AuthResponse(token, "Welcome " + useLoginRequest.getUsername()));
         } else {
             return ResponseEntity.status(401).body(new AuthResponse(null, "Invalid credentials"));
         }
