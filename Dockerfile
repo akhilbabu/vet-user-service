@@ -17,6 +17,8 @@ RUN mvn clean package -DskipTests
 # ---------- STAGE 2: Run ----------
 FROM eclipse-temurin:17-jdk-alpine
 
+# Install CA certificates package
+RUN apk add --no-cache ca-certificates && update-ca-certificates
 WORKDIR /app
 
 # Copy the built JAR from the builder stage
